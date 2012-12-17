@@ -54,7 +54,7 @@ There are two possible ways to invoke the wrapper processor.
    returns a list of unexpected/unmatched diagnostics. You can invoke this from
    e.g. a JUnit test:
 
-      Verifier.assertNoDiagnostics(Verifier.checkProcessorDiagnostics(MyTestInput.class));
+    Verifier.assertNoDiagnostics(Verifier.checkProcessorDiagnostics(MyTestInput.class));
 
  * Via normal annotation processing. In this case, you should explicitly tell
    the compiler to invoke uk.co.mutability.test.annotations.VerifyingProcessor,
@@ -62,16 +62,16 @@ There are two possible ways to invoke the wrapper processor.
    the name of your processor. For example, with javac, this looks something
    like:
 
-      javac -processor uk.co.mutability.test.annotations.VerifyingProcessor \
-            -processorpath path/to/ap-test-utils:path/to/my-processor \
-            -Amutability.test.delegateClassName=my.processor.ProcessorImpl \
-            src/TestInput.java
+    javac -processor uk.co.mutability.test.annotations.VerifyingProcessor \
+    -processorpath path/to/ap-test-utils:path/to/my-processor             \
+    -Amutability.test.delegateClassName=my.processor.ProcessorImpl        \
+    src/TestInput.java
 
 License
 -------
 
 This module is licensed under the GPL, version 2 or later. See
-<gpl-2.0.txt>. Note that merely using the module to feed test
+gpl-2.0.txt. Note that merely using the module to feed test
 input through a processor as part of testing does *not*
 require any of the test input or processor code to be GPL-compatibile.
 
