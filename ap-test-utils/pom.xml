@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>uk.co.mutability</groupId>
+	<artifactId>ap-test-utils</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>ap-test-utils</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<scm>
+		<connection>scm:git:https://github.com/mutability/ap-test-utils.git</connection>
+		<url>https://github.com/mutability/ap-test-utils</url>
+	</scm>
+
+	<url>https://github.com/mutability/ap-test-utils</url>
+
+	<licenses>
+		<license>
+			<distribution>repo</distribution>
+			<name>The GNU GPL, version 2 or later</name>
+			<url>http://www.gnu.org/licenses/gpl-2.0.html</url>
+		</license>
+	</licenses>
+
+	<description>Utilities for building annotation processor tests. Includes:
+
+ * A wrapper processor that runs another annotation processor against test input and validates that the processor under test generated a particular set of diagnostic messages.
+   The expected set of diagnostics is discovered by inspecting annotations on the test class.
+ * an implementation of JavaFileManager that stores all output on heap only, and delegates other access to another file manager (e.g. the compiler's default).
+  </description>
+
+	<developers>
+		<developer>
+			<name>Oliver Jowett</name>
+			<email>oliver@mutability.co.uk</email>
+		</developer>
+	</developers>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<executions>
+					<execution>
+						<id>attach-javadoc</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
