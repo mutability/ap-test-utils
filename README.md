@@ -13,7 +13,7 @@ In particular, it provides:
    act of running a processor is what you want to test, and you don't care
    about the generated output;
 
-Feedback to: Oliver Jowett <oliver@mutability.co.uk>
+Feedback to: Oliver Jowett (<oliver@mutability.co.uk>)
 
 
 Installation
@@ -33,7 +33,7 @@ Write a class that will be used as test input for your processor.
 
 On each element of the class (field, method, etc) that is expected
 to produce a diagnostic message when processed, add a
-@ExpectDiagnostic or @ExpectDiagnostics annotation. These annotations need
+`@ExpectDiagnostic` or `@ExpectDiagnostics` annotation. These annotations need
 to be on the same (javax.lang.model.element.) Element that your processor
 includes when generating the diagnostic.
 
@@ -50,11 +50,11 @@ Invoking the wrapper processor
 
 There are two possible ways to invoke the wrapper processor.
 
- * Via Verifier.checkProcessorDiagnostics(). This accepts a test class and
+ * Via `Verifier.checkProcessorDiagnostics()`. This accepts a test class and
    returns a list of unexpected/unmatched diagnostics. You can invoke this from
    e.g. a JUnit test:
 
-    Verifier.assertNoDiagnostics(Verifier.checkProcessorDiagnostics(MyTestInput.class));
+      `Verifier.assertNoDiagnostics(Verifier.checkProcessorDiagnostics(MyTestInput.class));`
 
  * Via normal annotation processing. In this case, you should explicitly tell
    the compiler to invoke uk.co.mutability.test.annotations.VerifyingProcessor,
@@ -62,10 +62,10 @@ There are two possible ways to invoke the wrapper processor.
    the name of your processor. For example, with javac, this looks something
    like:
 
-    javac -processor uk.co.mutability.test.annotations.VerifyingProcessor \
-    -processorpath path/to/ap-test-utils:path/to/my-processor             \
-    -Amutability.test.delegateClassName=my.processor.ProcessorImpl        \
-    src/TestInput.java
+      `javac -processor uk.co.mutability.test.annotations.VerifyingProcessor`
+      `-processorpath path/to/ap-test-utils:path/to/my-processor`
+      `-Amutability.test.delegateClassName=my.processor.ProcessorImpl`
+      `src/TestInput.java`
 
 License
 -------
